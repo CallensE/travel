@@ -1,11 +1,12 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, JsonPipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TemperaturePipe } from './pipes/temperature.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, DatePipe, UpperCasePipe, TemperaturePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -27,7 +28,7 @@ export class AppComponent {
       country: 'Spain',
       city: 'Granada',
       fromDate: new Date(2024, 8, 5),
-      toDate: new Date(2404, 8, 8),
+      toDate: new Date(2024, 8, 8),
       averageTemperature: 26,
       image: 'https://cdn.getyourguide.com/img/tour/4d9dcddd2b8d52f0.jpeg/70.jpg' 
     },
