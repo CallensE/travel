@@ -24,7 +24,7 @@
           {{destination.city | uppercase}}, {{destination.country}}
         </h5>
         <h6>
-          {{destination.fromDate | date}} - {{destination.toDate | date}}
+          {{destination.fromDate | date}} - {{destination.toDate | date : 'en-US'}}
         </h6>
         <p class="card-text">
           Average temperature: {{destination.averageTemperature | temperature : 'Celsius'}}
