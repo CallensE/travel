@@ -1,0 +1,31 @@
+<h2>My destinations</h2>
+
+<!-- <p *ngIf="destinations.length === 0">
+  There are no destinations
+</p> -->
+@if(destinations?.length === 0) {
+  <p>There are no destinations</p>
+}
+
+<div class="flex">
+  @for (destination of destinations; track destination.id) {
+  <div class="card me-2">
+    <img
+      [src]="destination.image"
+      class="card-img-top"
+      [alt]="destination.city"
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{destination.city | uppercase}}, {{destination.country}}
+      </h5>
+      <h6>
+        {{destination.fromDate | date}} - {{destination.toDate | date}}
+      </h6>
+      <p class="card-text">
+        Average temperature: {{destination.averageTemperature | temperature : 'Celsius'}}
+      </p>
+    </div>
+  </div>
+  }
+</div>  

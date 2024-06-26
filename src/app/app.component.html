@@ -2,72 +2,10 @@
   <h1>{{title}}</h1>
   <img [src]="imgLocation"/>
   <button class="btn btn-primary" (click)="changeTitle()">Click here</button>
-  <h2>My destinations</h2>
 
-  <!-- <p *ngIf="destinations.length === 0">
-    There are no destinations
-  </p> -->
-  @if(destinations.length === 0) {
-    <p>There are no destinations</p>
-  }
-
-  <div class="flex">
-    @for (destination of destinations; track destination.id) {
-    <div class="card me-2">
-      <img
-        [src]="destination.image"
-        class="card-img-top"
-        [alt]="destination.city"
-      />
-      <div class="card-body">
-        <h5 class="card-title">
-          {{destination.city | uppercase}}, {{destination.country}}
-        </h5>
-        <h6>
-          {{destination.fromDate | date}} - {{destination.toDate | date}}
-        </h6>
-        <p class="card-text">
-          Average temperature: {{destination.averageTemperature | temperature : 'Celsius'}}
-        </p>
-      </div>
-    </div>
-    }
-  </div>  
+  <app-destination-list [destinations]="destinations"></app-destination-list>
+  <app-destination-form (add)="save($event)"></app-destination-form>
   
-  <h2 class="mt-4">New destination</h2>
-  <form (ngSubmit)="save(destinationForm)" class="mt-2" #destinationForm="ngForm">
-    <div class="form-group">
-      <label for="inputCity">City</label>
-      <input type="text" id="inputCity" name="city" #cityModel="ngModel" class="form-control" [(ngModel)]="newDestination.city" required minlength="2"/>
-      @if (cityModel.hasError('required') && cityModel.control.touched){
-        <p class="error">City is required!</p>
-      }
-      @if (cityModel.hasError('minlength') && cityModel.control.touched){
-        <p class="error">City needs at least 2 charachters!</p>
-      }
-    </div>
-    <div class="form-group">
-      <label for="inputCountry">Country</label>
-      <input type="text" id="inputCountry" name="country" class="form-control" [(ngModel)]="newDestination.country" required minlength="2"/>
-    </div>
-    <div class="form-group">
-      <label for="inputFromDate">From</label>
-      <input type="date" id="inputFromDate" name="fromDate" class="form-control" [(ngModel)]="newDestination.fromDate" required/>
-    </div>
-    <div class="form-group">
-      <label for="inputToDate">To</label>
-      <input type="date" id="inputToDate" name="toDate" class="form-control" [(ngModel)]="newDestination.toDate" required/>
-    </div>
-    <div class="form-group">
-      <label for="inputTemperature">Average temperature</label>
-      <input type="number" id="inputTemperature" name="averageTemperature" class="form-control" [(ngModel)]="newDestination.averageTemperature" required/>
-    </div>
-    <div class="form-group">
-        <label for="inputImageLink">Link to image</label>
-        <input type="url" id="inputImageLink" name="image" class="form-control" [(ngModel)]="newDestination.image" required/>
-      </div>
-    <button type="submit" class="btn btn-primary mt-2 mb-2" [disabled]="destinationForm.invalid">Voeg bestemming toe</button>
-  </form>
 </div>
 
  
