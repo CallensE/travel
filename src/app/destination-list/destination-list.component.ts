@@ -1,5 +1,5 @@
 import { DatePipe, UpperCasePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TemperaturePipe } from '../pipes/temperature.pipe';
 import { Destination } from '../models/destination';
 
@@ -11,5 +11,10 @@ import { Destination } from '../models/destination';
   styleUrl: './destination-list.component.scss'
 })
 export class DestinationListComponent {
-  @Input() destinations?: Destination[];
+  @Input() destinations!: Destination[];
+  @Output() delete = new EventEmitter<number>();
+
+  deleteDestinations(id: number) {
+    this.delete.emit(id);
+  }
 }

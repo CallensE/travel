@@ -1,4 +1,5 @@
 import {
+  AsyncPipe,
   CommonModule,
   DatePipe,
   JsonPipe,
@@ -12,6 +13,7 @@ import { Destination } from './models/destination';
 import { DestinationListComponent } from './destination-list/destination-list.component';
 import { DestinationFormComponent } from './destination-form/destination-form.component';
 import { DestinationService } from './services/destination.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,8 @@ import { DestinationService } from './services/destination.service';
     TemperaturePipe,
     FormsModule,
     DestinationListComponent,
-    DestinationFormComponent
+    DestinationFormComponent,
+    AsyncPipe
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -32,16 +35,23 @@ import { DestinationService } from './services/destination.service';
 export class AppComponent implements OnInit, OnDestroy{
   title = 'My travel app';
   imgLocation = '/images/travel.jpg';
-  destinations! : Destination[];
+  // destinations! : Destination[];
+  destinations$!: Observable<Destination[]>;
 
   constructor(private destinationService: DestinationService) {
     
   }
 
   ngOnInit(): void {
-    this.destinationService.getAllDestinations().subscribe((allDestinations: Destination[]) => {
-      this.destinations = allDestinations;
-    });
+    this.updateDestinations();
+  }
+
+  updateDestinations() {
+    this.destinations$ = this.destinationService.getAllDestinations();
+
+    // this.destinationService.getAllDestinations().subscribe((allDestinations: Destination[]) => {
+    //   this.destinations = allDestinations;
+    // });
   }
 
   changeTitle(): void {
@@ -49,7 +59,15 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   save(destination: Destination) {
-    this.destinationService.addDestination(destination);
+    this.destinationService.addDestination(destination).subscribe(x => {
+      this.updateDestinations();
+    });
+  }
+
+  deleteDestination(id: number) {
+    this.destinationService.deleteDestination(id).subscribe(x => {
+      this.updateDestinations();
+    });
   }
 
   ngOnDestroy(): void {

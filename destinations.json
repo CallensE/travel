@@ -1,0 +1,32 @@
+{
+  "destinations": [
+    {
+      "id": 0,
+      "country": "Spanje",
+      "city": "Malaga",
+      "fromDate": "2024-04-23T00:00:00.000Z",
+      "toDate": "2024-04-23T00:00:00.000Z",
+      "averageTemperature": 25,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/40/M%C3%A1laga_-_vistas_desde_el_Parador_de_Gibralfaro_01_%28cropped%29.jpg"
+    },
+    {
+      "id": 1,
+      "country": "Spanje",
+      "city": "Granada",
+      "fromDate": "2024-04-23T00:00:00.000Z",
+      "toDate": "2024-04-23T00:00:00.000Z",
+      "averageTemperature": 26,
+      "image": "https://cdn.getyourguide.com/img/tour/4d9dcddd2b8d52f0.jpeg/70.jpg"
+    },
+    {
+      "averageTemperature": 30,
+      "city": "Lier",
+      "country": "Belgium",
+      "fromDate": "2024-06-27",
+      "toDate": "2024-06-28",
+      "image": "https://www.inexal.be/sites/inexal/files/styles/colorbox_large__1200x1200/public/bdaed219-5bc3-4457-980e-01590a161747-istock-533697877_1.jpg",
+      "id": 2
+    }
+  ],
+  "packing-list-items": []
+}

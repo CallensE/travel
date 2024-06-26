@@ -2,8 +2,7 @@
   <h1>{{title}}</h1>
   <img [src]="imgLocation"/>
   <button class="btn btn-primary" (click)="changeTitle()">Click here</button>
-
-  <app-destination-list [destinations]="destinations"></app-destination-list>
+  <app-destination-list [destinations]="(destinations$ | async)!" (delete)="deleteDestination($event)"></app-destination-list>
   <app-destination-form (add)="save($event)"></app-destination-form>
   
 </div>

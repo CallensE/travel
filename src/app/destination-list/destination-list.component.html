@@ -25,6 +25,7 @@
       <p class="card-text">
         Average temperature: {{destination.averageTemperature | temperature : 'Celsius'}}
       </p>
+      <button class="btn btn-primary" (click)="deleteDestinations(destination.id)">Remove</button>
     </div>
   </div>
   }
