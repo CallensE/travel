@@ -1,0 +1,27 @@
+<h2>New packing list item</h2>
+<form (submit)="save()" [formGroup]="packingListItemForm">
+    <label for="item">Item</label>
+    <input type="text" name="item" id="item" formControlName="item"/>
+    <button type="submit" class="btn btn-primary" [disabled]="!packingListItemForm.valid">
+        @if(packingListItemForm.pending){
+            <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+            ></span>   
+        }     
+        Add item
+    </button>
+    @if (packingListItemForm.controls.item.hasError('required') && packingListItemForm.controls.item.touched) {
+        <p class="error">You need to fill in an item.</p>
+    }
+    @if (packingListItemForm.controls.item.hasError('minlength')) {
+        <p class="error">The item must have at least two charachters.</p>
+    }
+    @if (packingListItemForm.controls.item.hasError('maxlength')) {
+        <p class="error">The item must have at most two charachters.</p>
+    }
+    @if (packingListItemForm.controls.item.hasError('uniqueItem')) {
+        <p class="error">The item is not unique.</p>
+    }
+</form>

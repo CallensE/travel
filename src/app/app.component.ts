@@ -9,8 +9,6 @@ import { RouterOutlet } from '@angular/router';
 import { TemperaturePipe } from './pipes/temperature.pipe';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
-import { PackingListPageComponent } from './packing-list/packing-list-page/packing-list-page.component';
-import { PackingListModule } from './packing-list/packing-list.module';
 
 @Component({
   selector: 'app-root',
@@ -24,12 +22,11 @@ import { PackingListModule } from './packing-list/packing-list.module';
     FormsModule,
     AsyncPipe,
     MenuComponent,
-    PackingListModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent{
+export class AppComponent {
   title = 'My travel app';
   imgLocation = '/images/travel.jpg';
 

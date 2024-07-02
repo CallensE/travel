@@ -8,7 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-packing-list-item-page',
   templateUrl: './packing-list-item-page.component.html',
-  styleUrl: './packing-list-item-page.component.scss'
+  styleUrl: './packing-list-item-page.component.scss',
+  standalone: true,
+  imports: [AsyncPipe, JsonPipe]
 })
 export class PackingListItemPageComponent implements OnInit {
 

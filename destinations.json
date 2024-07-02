@@ -36,6 +36,22 @@
     {
       "id": 1,
       "item": "t-shirt"
+    },
+    {
+      "item": "bikini",
+      "id": 2
+    },
+    {
+      "item": "bikini2",
+      "id": 3
+    },
+    {
+      "item": "bikini2",
+      "id": 4
+    },
+    {
+      "item": "shorts",
+      "id": 5
     }
   ]
 }

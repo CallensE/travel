@@ -19,11 +19,15 @@ export class PackingListItemService {
     return this.http.get<PackingListItem>(`${environment.apiUrl}packing-list-items/${id}`);
   }
 
-  addPackingListItem({id, ...destination}: PackingListItem): Observable<PackingListItem> {
-    return this.http.post<PackingListItem>(`${environment.apiUrl}packing-list-items`, destination);
+  addPackingListItem(item: string): Observable<PackingListItem> {
+    return this.http.post<PackingListItem>(`${environment.apiUrl}packing-list-items`, {item});
   } 
 
   deletePackingListItem(id: number): Observable<PackingListItem> {
     return this.http.delete<PackingListItem>(`${environment.apiUrl}packing-list-items/${id}`);
+  }
+
+  getByItem(item: string): Observable<PackingListItem[]> {
+    return this.http.get<PackingListItem[]>(`${environment.apiUrl}packing-list-items?item=${item}`);
   }
 }
