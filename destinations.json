@@ -28,5 +28,14 @@
       "id": 2
     }
   ],
-  "packing-list-items": []
+  "packing-list-items": [
+    {
+      "id": 0,
+      "item": "toothbrush"
+    },
+    {
+      "id": 1,
+      "item": "t-shirt"
+    }
+  ]
 }

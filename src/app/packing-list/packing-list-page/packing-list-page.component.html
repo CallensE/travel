@@ -1,0 +1,5 @@
+<ul class="list-group list-group-numbered">
+    @for(item of (packingList$ | async); track item.id) {
+        <li class="list-group-item" [routerLink]="['/packing-list', item.id]" >{{item.item}}</li>
+    }
+</ul>

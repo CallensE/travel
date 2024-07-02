@@ -1,0 +1,2 @@
+<app-destination-list [destinations]="(destinations$ | async)!" (delete)="deleteDestination($event)"></app-destination-list>
+<app-destination-form (add)="save($event)"></app-destination-form>

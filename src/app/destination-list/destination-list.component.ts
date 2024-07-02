@@ -11,7 +11,7 @@ import { Destination } from '../models/destination';
   styleUrl: './destination-list.component.scss'
 })
 export class DestinationListComponent {
-  @Input() destinations!: Destination[];
+  @Input() destinations?: Destination[];
   @Output() delete = new EventEmitter<number>();
 
   deleteDestinations(id: number) {
