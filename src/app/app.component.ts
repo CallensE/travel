@@ -9,6 +9,7 @@ import { RouterOutlet } from '@angular/router';
 import { TemperaturePipe } from './pipes/temperature.pipe';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
+import { ContentDirective } from './directives/content.directive';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { MenuComponent } from './menu/menu.component';
     FormsModule,
     AsyncPipe,
     MenuComponent,
+    ContentDirective
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

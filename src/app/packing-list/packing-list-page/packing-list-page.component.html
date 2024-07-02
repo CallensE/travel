@@ -1,6 +1,6 @@
 <ul class="list-group list-group-numbered">
     @for(item of (packingList$ | async); track item.id) {
-        <li class="list-group-item" [routerLink]="['/packing-list', item.id]" >{{item.item}}</li>
+        <li class="list-group-item" [routerLink]="['/packing-list', item.id]" appHighlight="yellow">{{item.item}}</li>
     }
 </ul>
 <app-packing-list-item-form (add)="addNewItem($event)"></app-packing-list-item-form>
