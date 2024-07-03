@@ -1,23 +1,19 @@
 import { Routes } from '@angular/router';
-import { DestinationPageComponent } from './destination/destination-page/destination-page.component';
-import { PackingListPageComponent } from './packing-list/packing-list-page/packing-list-page.component';
-import { PackingListItemPageComponent } from './packing-list/packing-list-item-page/packing-list-item-page.component';
-import { packingListItemResolver } from './resolvers/packing-list-item.resolver';
+import { packingListRoutes } from './packing-list/packing-list.routes';
 import { testGuard } from './test.guard';
 
 export const routes: Routes = [
-    {
-        path: 'destinations',
-        component: DestinationPageComponent
-    },
-    {
-        path: 'packing-list',
-        component: PackingListPageComponent
-    },
-    {
-        path: 'packing-list/:id',
-        component: PackingListItemPageComponent,
-        resolve: { item: packingListItemResolver},
-        canActivate: [testGuard]
-    }
+  {
+    path: 'destinations',
+    loadComponent: async () => (await import('./destination/destination-page/destination-page.component')).DestinationPageComponent
+  },
+  {
+    path: 'packing-list',
+    canActivate: [testGuard],
+    children: packingListRoutes,
+  },
+  {
+    path: 'countdown',
+    loadComponent: async () => (await import('./countdown/countdown-page/countdown-page.component')).CountdownPageComponent
+  }
 ];
