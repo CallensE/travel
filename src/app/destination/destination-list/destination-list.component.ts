@@ -1,7 +1,7 @@
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TemperaturePipe } from '../pipes/temperature.pipe';
-import { Destination } from '../models/destination';
+import { TemperaturePipe } from '../../pipes/temperature.pipe';
+import { Destination } from '../../models/destination';
 
 @Component({
   selector: 'app-destination-list',

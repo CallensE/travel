@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DestinationService } from '../services/destination.service';
-import { Destination } from '../models/destination';
+import { DestinationService } from '../../services/destination.service';
+import { Destination } from '../../models/destination';
 import { Observable } from 'rxjs';
 import { DestinationFormComponent } from '../destination-form/destination-form.component';
 import { DestinationListComponent } from '../destination-list/destination-list.component';

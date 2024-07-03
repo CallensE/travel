@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PackingListItemService } from '../../services/packing-list-item.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscription, interval, takeUntil, tap } from 'rxjs';
 import { PackingListItem } from '../../models/packing-list-item';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PackingListItemFormComponent } from '../packing-list-item-form/packing-list-item-form.component';
 import { HighlightDirective } from '../../directives/highlight.directive';
+import { PackingListStore } from '../stores/packing-list-store';
 
 @Component({
   selector: 'app-packing-list-page',
@@ -14,18 +15,25 @@ import { HighlightDirective } from '../../directives/highlight.directive';
   standalone: true,
   imports: [AsyncPipe, RouterLink, PackingListItemFormComponent, HighlightDirective]
 })
-export class PackingListPageComponent implements OnInit {
+export class PackingListPageComponent implements OnInit, OnDestroy {
   packingList$!: Observable<PackingListItem[]>;
   highLightColor = 'yellow';
+  interval$ = interval(1000).pipe(tap(x => console.log(x)));
+  destroy$ = new Subject<void>();
 
-  constructor(private packingListItemService: PackingListItemService) {  }
+  constructor(private packingListStore: PackingListStore) {  }
 
   ngOnInit(): void {
-    this.packingList$ = this.packingListItemService.getAllPackingListItems();
+    // this.interval$.pipe(takeUntil(this.destroy$)).subscribe();
+    this.packingList$ = this.packingListStore.packingListItems$;
   }
 
   addNewItem(item: string) {
-    this.packingListItemService.addPackingListItem(item).subscribe();
-    this.packingList$ = this.packingListItemService.getAllPackingListItems();
+    this.packingListStore.addPackingListItem(item);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

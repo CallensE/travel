@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Destination } from '../models/destination';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Destination } from '../../models/destination';
 
 @Component({
   selector: 'app-destination-form',
